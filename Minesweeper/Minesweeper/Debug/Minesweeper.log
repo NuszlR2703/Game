@@ -1,0 +1,4 @@
+﻿  Source.c
+D:\Dokumentumok\2019-2020\PROGRAMOZAS\Minesweeper\Minesweeper\Source.c(45,33): warning C4020: 'Jeloles': too many actual parameters
+D:\Dokumentumok\2019-2020\PROGRAMOZAS\Minesweeper\Minesweeper\Source.c(10,10): warning C4101: 'sz': unreferenced local variable
+  Minesweeper.vcxproj -> D:\Dokumentumok\2019-2020\PROGRAMOZAS\Minesweeper\Debug\Minesweeper.exe

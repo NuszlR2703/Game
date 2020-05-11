@@ -286,19 +286,8 @@ void reset() {
 }
 
 void kezdokepernyo(){
-	green();
-	printf("						DURR");
-	red();
-	printf("--");
-	magenta();
-	printf("BELE\n");
-	cyan();
-	printf("					       BUMM");
-	magenta();
-	printf("BUMM");
-	green();
-	printf("BUMM\n\n\n");
-	red();
+	cimkiir();
+	printf("\n\n\n");
 	printf("Szabalyok!\n");
 	reset();
 	printf("A 8 * 8 as palyan talalhato 10 darab akna.Ezek helye rejtett eloled, de ne aggodj\n van lehetoseged tulelni.Ha odafigyelsz akkor konnyen gyozhetsz!\n");
@@ -312,8 +301,14 @@ void kezdokepernyo(){
 	green();
 	printf("Akkor nyersz, ha megtalalod az osszes SZABAD MEZOT!\n\n");
 	red();
-	printf("<ENTER> a JATEK INDITASARA\n");
-	getchar();
+	char v;
+	printf("PLEASE INSERT OPTION:\n  ");
+	printf("PRESS ANY KEY TO START\n  ");
+	printf("<ESC> TO  QUIT\n");
+	v = getch();
+	if (v == '\x1b') {
+		exit(0);
+	}
 	return 0;
 }
 void gameover() {
@@ -341,4 +336,42 @@ void congratuation() {
 	getchar();
 	exit(0);
 	return 0;
+}
+void cimkiir(){
+	FILE* fin;
+	fin = fopen("cim.txt", "r");
+	if (!fin){
+		printf("HIBA");
+		return 1;
+	}
+	int i;
+	char cim[500];
+	srand(time(NULL));
+	i = rand() % 4+1;
+	printf("%d ", i);
+	switch (i) {
+		case 1: {
+			green();
+			break;
+		}
+		case 2: {
+			cyan();
+			break;
+		}
+		case 3: {
+			red();
+			break;
+		}
+		case 4: {
+			magenta();
+			break;
+		}
+		default: {
+			break;
+		}
+	}
+	while (fscanf(fin, "%[^\n]\n", &cim) != EOF){
+		printf("\t  %s\n", cim);
+	}
+	reset();
 }

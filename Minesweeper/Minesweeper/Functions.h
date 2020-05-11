@@ -33,4 +33,5 @@ void reset();
 void kezdokepernyo();
 void gameover();
 void congratuation();
+void cimkiir();
 #endif

@@ -10,7 +10,7 @@ matrix Create1(){
 	int k = 100;
 	return m;
 }
-matrix Create2() {
+matrix Create2(int nehezseg) {
 	matrix m;
 	int k = 100;
 	for (int i = 0; i < 12; ++i) {
@@ -22,7 +22,7 @@ matrix Create2() {
 	int s, o, z;
 	m.ossz = 0;
 	int rossz;
-	for (int i = 1; i <=10;++i) {
+	for (int i = 1; i <= nehezseg;++i) {
 		rossz = 0;
 		s = 2 + rand() % 8;
 		o = 2 + rand() % 8;
@@ -224,27 +224,27 @@ void Print(matrix m) {
 	clrscr();
 	red();
 	printf("Megmaradt aknak szama: %d\n\n     ", m.ossz);
-	yellow();
+	cyan();
 	for (char i = 'A'; i < 'I'; ++i) {
-		printf("|%c|  ",i);
+		printf("|%c| ",i);
 	}
 	printf("\n\n");
 	for (int i = 2; i < 10; ++i) {
-		yellow();
+		cyan();
 		printf("|%d| ",i-1);
 		reset();
 		for (int j = 2; j < 10; ++j) {
 			if (m.mat[i][j] == 'O') {
-				reset();
-				printf(" |%c| ", m.mat[i][j]);
+				magenta();
+				printf(" %c%c ", 219,219);
 			}
 			else if (m.mat[i][j] == 'I') {
 				cyan();
-				printf(" |%c| ", m.mat[i][j]);
+				printf(" %c%c ", 219, 219);
 			}
 			else {
 				red();
-				printf(" |%c| ", m.mat[i][j]);
+				printf(" %c  ",m.mat[i][j]);
 			}
 		}
 		printf("\n\n");
@@ -299,12 +299,19 @@ void kezdokepernyo(){
 	printf("A 'I' -vel jelolt helyen ismeretlen mezo van\n		");
 	printf("0- tol 8 ig a szamjegyek azt muatjak, hogy a mezo kozvetlen kozeleben hany akna talalhato\n");
 	green();
-	printf("Akkor nyersz, ha megtalalod az osszes SZABAD MEZOT!\n\n");
+	printf("	Akkor nyersz, ha megtalalod az osszes SZABAD MEZOT!\n\n");
 	red();
 	char v;
-	printf("PLEASE INSERT OPTION:\n  ");
+	reset();
+	printf("			PLEASE INSERT OPTION:\n  ");
+	reset();
+	printf("			-->");
+	green();
 	printf("PRESS ANY KEY TO START\n  ");
-	printf("<ESC> TO  QUIT\n");
+	reset();
+	printf("			-->");
+	red();
+	printf("<ESC> TO  QUIT\n				");
 	v = getch();
 	if (v == '\x1b') {
 		exit(0);
@@ -313,12 +320,10 @@ void kezdokepernyo(){
 }
 void gameover() {
 	clrscr();
-	green();
-	printf("						GAM");
-	magenta();
-	printf("E OV");
-	cyan();
-	printf("ER\n");
+	for (int i = 0; i < 50; ++i) {
+		overkiir();
+		clrscr();
+	}
 	printf("Press Any Key to Continue\n");
 	getchar();
 	exit(0);
@@ -348,7 +353,6 @@ void cimkiir(){
 	char cim[500];
 	srand(time(NULL));
 	i = rand() % 4+1;
-	printf("%d ", i);
 	switch (i) {
 		case 1: {
 			green();
@@ -373,5 +377,127 @@ void cimkiir(){
 	while (fscanf(fin, "%[^\n]\n", &cim) != EOF){
 		printf("\t  %s\n", cim);
 	}
+	fclose(fin);
 	reset();
+}
+void overkiir() {
+	FILE* fin;
+	fin = fopen("gmvr.txt", "r");
+	if (!fin) {
+		printf("HIBA");
+		return 1;
+	}
+	int i;
+	char cim[500];
+	srand(time(NULL));
+	i = rand() % 4 + 1;
+	switch (i) {
+		case 1: {
+			green();
+			break;
+		}
+		case 2: {
+			cyan();
+			break;
+		}
+		case 3: {
+			red();
+			break;
+		}
+		case 4: {
+			magenta();
+			break;
+		}
+		default: {
+			break;
+		}
+	}
+	while (fscanf(fin, "%[^\n]\n", &cim) != EOF) {
+		printf("\t  %s\n", cim);
+	}
+	reset();
+}
+matrix szintvalaszto(){
+	char v;
+	do {
+		printf("\n	Milyen szinten szeretnel jatszani a jatekkal?\n");
+		green();
+		printf("		EASY()");
+		reset();
+		printf("   MEDIUM(M)");
+		red();
+		printf("   HARD(H)");
+		reset();
+		v = getch();
+		printf("\n");
+		if (v == 'E') {
+			return Create2(6);
+		}
+		else if (v == 'M') {
+			return Create2(10);
+		}
+		else if (v == 'H') {
+			return Create2(20);
+		}
+	} while (v != 'E' && v != 'M' && v != 'H');
+}
+void kor(matrix palya, matrix hatter, int szint) {
+	int sz, szamlalo;
+	char l[2];
+	szamlalo = 0;
+	char v;
+	for (int z = 0;; z++) {
+		printf("\n");
+		szamlalo = 0;
+		if (szamlalo == 64-hatter.ossz) {
+			congratuation();
+			break;
+		}
+		do {
+			reset();
+			printf("	Mit szeretnel csinalni?\n");
+			red();
+			printf("1. Raprobalni		");
+			cyan();
+			printf("2. Megjelolni\n\n");
+			printf("                 ");
+			green();
+			v = getch();
+			printf("\n");
+			if (v == '1') {
+				printf("	     Raprobalas\n");
+				reset();
+				printf("	Melyik mezot valasztod?\n	     (BETU+SZAM)\n");
+				printf("                 ");
+				green();
+				scanf("%s", l);
+				reset();
+				palya = Tippelos(palya, hatter, l);
+				Print(palya);
+			}
+			if (v == '2') {
+				printf("	     Megjeloles\n");
+				reset();
+				printf("	Melyik mezot valasztod?\n	     (BETU+SZAM)\n");
+				printf("                 ");
+				green();
+				scanf("%s", &l);
+				reset();
+				palya = Jeloles(palya, hatter, l);
+				Print(palya);
+			}
+			else {
+				clrscr();
+				Print(palya);
+			}
+		} while (v != '1' && v != '2');
+
+		for (int i = 2; i < 10; ++i) {
+			for (int j = 2; j < 10; ++j) {
+				if (palya.mat[i][j] >= 0 && palya.mat[i][j] < 9) {
+					szamlalo++;
+				}
+			}
+		}
+	}
 }

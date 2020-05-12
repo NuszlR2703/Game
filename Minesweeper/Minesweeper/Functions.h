@@ -16,7 +16,7 @@ typedef struct matrix {
 } matrix;
 
 matrix Create1();
-matrix Create2();
+matrix Create2(int nehezseg);
 
 void Print(matrix m);
 matrix Jeloles(matrix palya, matrix hatter);
@@ -34,4 +34,7 @@ void kezdokepernyo();
 void gameover();
 void congratuation();
 void cimkiir();
+void overkiir();
+void kor(matrix palya, matrix hatter);
+matrix szintvalaszto();
 #endif

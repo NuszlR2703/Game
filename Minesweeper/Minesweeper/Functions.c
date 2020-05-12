@@ -28,8 +28,8 @@ matrix Create2(int x, int y, int nehezseg) {
 	int rossz;
 	for (int i = 1; i <= nehezseg; ++i) {
 		rossz = 0;
-		s = 2 + rand() % 8;
-		o = 2 + rand() % 8;
+		s = 2 + rand() % m.meret;
+		o = 2 + rand() % m.meret;
 		if (m.mat[s][o] == 'O') {
 			m.mat[s][o] = 'B';
 		}
@@ -85,6 +85,9 @@ matrix Tippelos(matrix palya, matrix hatter, char l[3]){
 	}
 	char sz;
 	if (hatter.mat[i][j] == 'B') {
+		palya.mat[i][j] = 'B';
+		Print(palya);
+		delay(3);
 		gameover();
 	}
 	else {
@@ -243,7 +246,11 @@ matrix Tippelos(matrix palya, matrix hatter, char l[3]){
 	}
 	return palya;
 }
-
+void delay(int sec){ 
+	int milli_seconds = 1000 * sec;
+	clock_t start_time = clock(); 
+	while (clock() < start_time + milli_seconds);
+}
 void Print(matrix m) {
 	clrscr();
 	red();
@@ -276,15 +283,19 @@ void Print(matrix m) {
 		reset();
 		for (int j = 2; j < m.meret; ++j) {
 			if (m.mat[i][j] == 'O') {
-				magenta();
-				printf(" %c%c ", 219,219);
+				reset();
+				printf(" %c%c ", 219, 219);
 			}
 			else if (m.mat[i][j] == 'I') {
 				cyan();
 				printf(" %c%c ", 219, 219);
 			}
-			else {
+			else if (m.mat[i][j] == 'B') {
 				red();
+				printf(" %c  ", m.mat[i][j]);
+			}
+			else {
+				green();
 				printf(" %c  ",m.mat[i][j]);
 			}
 		}

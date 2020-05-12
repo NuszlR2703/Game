@@ -41,6 +41,7 @@ void gameover();
 void congratuation();
 void cimkiir();
 void overkiir();
+void delay(int sec);
 void kor(matrix palya, matrix hatter);
 jatekpalya szintvalaszto();
 #endif

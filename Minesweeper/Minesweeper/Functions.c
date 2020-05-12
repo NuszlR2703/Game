@@ -1,20 +1,24 @@
 #include "Functions.h"
 
-matrix Create1(){
+matrix Create1(int x, int y){
 	matrix m;
-	for (int i = 0; i < 12; ++i) {
-		for (int j = 0; j < 12; ++j) {
+	m.meret = x+2;
+	x += 2;
+	y += 2;
+	for (int i = 0; i < x; ++i) {
+		for (int j = 0; j < y; ++j) {
 			m.mat[i][j] = 'O';
 		}
 	}
-	int k = 100;
 	return m;
 }
-matrix Create2(int nehezseg) {
+matrix Create2(int x, int y, int nehezseg) {
 	matrix m;
-	int k = 100;
-	for (int i = 0; i < 12; ++i) {
-		for (int j = 0; j < 12; ++j) {
+	m.meret = x;
+	x += 2;
+	y += 2;
+	for (int i = 0; i < x; ++i) {
+		for (int j = 0; j < y; ++j) {
 			m.mat[i][j] = 'O';
 		}
 	}
@@ -22,7 +26,7 @@ matrix Create2(int nehezseg) {
 	int s, o, z;
 	m.ossz = 0;
 	int rossz;
-	for (int i = 1; i <= nehezseg;++i) {
+	for (int i = 1; i <= nehezseg; ++i) {
 		rossz = 0;
 		s = 2 + rand() % 8;
 		o = 2 + rand() % 8;
@@ -45,9 +49,20 @@ matrix Create2(int nehezseg) {
 	return m;
 }
 
-matrix Jeloles(matrix palya, matrix hatter, char l[2]) {
+matrix Jeloles(matrix palya, matrix hatter, char l[23]) {
+	int s1 = 0;
+	int s2 = 0;
 	int j = l[0] - 16 - 47;
-	int i = l[1] - 47;
+	s1 = l[1] - 48;
+	s2 = l[2] - 48;
+	int i;
+	if (s2 < 0) {
+		i = s1 + 1;
+	}
+	else {
+		i = s1 * 10 + s2 + 1;
+	}
+	printf("%d", i);
 	char sz;
 	palya.mat[i][j] = 'I';
 	if (hatter.mat[i][j]=='B') {
@@ -55,11 +70,20 @@ matrix Jeloles(matrix palya, matrix hatter, char l[2]) {
 	}
 	return palya;
 }
-matrix Tippelos(matrix palya, matrix hatter, char l[2]){
+matrix Tippelos(matrix palya, matrix hatter, char l[3]){
+	int s1 = 0;
+	int s2 = 0;
 	int j = l[0]-16-47;
-	int i = l[1]-47;
+    s1 = l[1] - 48;
+	s2 = l[2] - 48;
+	int i;
+	if (s2<0) {
+		i = s1+1;
+	}
+	else {
+		i = s1 * 10 + s2+1;
+	}
 	char sz;
-	
 	if (hatter.mat[i][j] == 'B') {
 		gameover();
 	}
@@ -225,15 +249,32 @@ void Print(matrix m) {
 	red();
 	printf("Megmaradt aknak szama: %d\n\n     ", m.ossz);
 	cyan();
-	for (char i = 'A'; i < 'I'; ++i) {
-		printf("|%c| ",i);
+	if (m.meret==10) {
+		for (char i = 'A'; i < 'I'; ++i) {
+			printf("|%c| ", i);
+		}
+	}
+	else if (m.meret==18) {
+		for (char i = 'A'; i < 'Q'; ++i) {
+			printf("|%c| ", i);
+		}
+	}
+	else if (m.meret==27) {
+		for (char i = 'A'; i < 'Z'; ++i) {
+			printf("|%c| ", i);
+		}
 	}
 	printf("\n\n");
-	for (int i = 2; i < 10; ++i) {
+	for (int i = 2; i < m.meret; ++i) {
 		cyan();
-		printf("|%d| ",i-1);
+		if (i-1<10) {
+			printf("|%d|  ", i - 1);
+		}
+		else {
+			printf("|%d| ", i - 1);
+		}
 		reset();
-		for (int j = 2; j < 10; ++j) {
+		for (int j = 2; j < m.meret; ++j) {
 			if (m.mat[i][j] == 'O') {
 				magenta();
 				printf(" %c%c ", 219,219);
@@ -417,7 +458,8 @@ void overkiir() {
 	}
 	reset();
 }
-matrix szintvalaszto(){
+jatekpalya szintvalaszto(){
+	jatekpalya aux;
 	char v;
 	do {
 		printf("\n	Milyen szinten szeretnel jatszani a jatekkal?\n");
@@ -431,25 +473,29 @@ matrix szintvalaszto(){
 		v = getch();
 		printf("\n");
 		if (v == 'E') {
-			return Create2(6);
+			aux.hatter = Create2(8,8,10);
+			aux.palya = Create1(8,8);
 		}
 		else if (v == 'M') {
-			return Create2(10);
+			aux.hatter = Create2(16,16,40);
+			aux.palya = Create1(16,16);
 		}
 		else if (v == 'H') {
-			return Create2(20);
+			aux.hatter = Create2(25,25,60);
+			aux.palya = Create1(25,25);
 		}
 	} while (v != 'E' && v != 'M' && v != 'H');
+	return aux;
 }
 void kor(matrix palya, matrix hatter, int szint) {
 	int sz, szamlalo;
-	char l[2];
+	char l[3];
 	szamlalo = 0;
 	char v;
 	for (int z = 0;; z++) {
 		printf("\n");
 		szamlalo = 0;
-		if (szamlalo == 64-hatter.ossz) {
+		if (szamlalo == (palya.meret - 2) * (palya.meret - 2) -hatter.ossz) {
 			congratuation();
 			break;
 		}
@@ -492,9 +538,9 @@ void kor(matrix palya, matrix hatter, int szint) {
 			}
 		} while (v != '1' && v != '2');
 
-		for (int i = 2; i < 10; ++i) {
-			for (int j = 2; j < 10; ++j) {
-				if (palya.mat[i][j] >= 0 && palya.mat[i][j] < 9) {
+		for (int i = 2; i < palya.meret; ++i) {
+			for (int j = 2; j < palya.meret; ++j) {
+				if (palya.mat[i][j] >= 48 && palya.mat[i][j] < 57) {
 					szamlalo++;
 				}
 			}

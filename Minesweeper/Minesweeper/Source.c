@@ -2,12 +2,10 @@
 
 int main() {
 	kezdokepernyo();
-	
-	matrix palya = Create1();
-	matrix hatter = szintvalaszto();
-	palya.ossz = hatter.ossz;
-	Print(palya);
+	jatekpalya P = szintvalaszto();
+	P.palya.ossz = P.hatter.ossz;
+	Print(P.palya);
 	printf("\n\n");
-	kor(palya,hatter);
+	kor(P.palya,P.hatter);
 	return 0;
 }

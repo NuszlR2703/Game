@@ -1,15 +1,27 @@
 ﻿  Functions.c
-C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(25,18): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(26,12): warning C4101: 'z': unreferenced local variable
-C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(66,7): warning C4101: 'sz': unreferenced local variable
-C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(367,11): warning C4013: 'getch' undefined; assuming extern returning int
-C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(371,10): warning C4098: 'kezdokepernyo': 'void' function returning a value
-C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(382,10): warning C4098: 'gameover': 'void' function returning a value
-C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(395,10): warning C4098: 'congratuation': 'void' function returning a value
-C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(402,11): warning C4098: 'cimkiir': 'void' function returning a value
-C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(406,18): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(440,11): warning C4098: 'overkiir': 'void' function returning a value
-C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(444,18): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(501,50): warning C4029: declared formal parameter list different from definition
-C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(502,6): warning C4101: 'sz': unreferenced local variable
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(16,12): warning C4013: 'getch' undefined; assuming extern returning int
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(94,18): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(95,12): warning C4101: 'z': unreferenced local variable
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(126,11): warning C4098: 'cimkiir': 'void' function returning a value
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(130,18): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(160,55): warning C4029: declared formal parameter list different from definition
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(161,6): warning C4101: 'sz': unreferenced local variable
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(221,56): warning C4029: declared formal parameter list different from definition
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(222,6): warning C4101: 'sz': unreferenced local variable
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(352,7): warning C4101: 'sz': unreferenced local variable
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(585,10): warning C4098: 'kezdokepernyo': 'void' function returning a value
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(617,10): warning C4098: 'angol': 'void' function returning a value
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(649,10): warning C4098: 'magyar': 'void' function returning a value
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(666,10): warning C4098: 'gameover': 'void' function returning a value
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(683,10): warning C4098: 'congratuation': 'void' function returning a value
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(692,12): warning C4098: 'overkiir': 'void' function returning a value
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(696,19): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(728,12): warning C4098: 'overkiir': 'void' function returning a value
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(732,19): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(768,12): warning C4098: 'congratkiir': 'void' function returning a value
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(772,19): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(804,12): warning C4098: 'congratkiir': 'void' function returning a value
+C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Minesweeper\Functions.c(808,19): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Source.c
+  Generating Code...
   Minesweeper.vcxproj -> C:\Users\richa\OneDrive\Documents\GitHub\Game\Minesweeper\Debug\Minesweeper.exe

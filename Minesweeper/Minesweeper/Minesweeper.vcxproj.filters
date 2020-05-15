@@ -28,7 +28,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="gmvr.txt" />
     <Text Include="cim.txt" />
+    <Text Include="gmvrm.txt" />
+    <Text Include="gmvra.txt" />
+    <Text Include="winm.txt" />
+    <Text Include="wina.txt" />
   </ItemGroup>
 </Project>
